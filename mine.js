@@ -13,7 +13,7 @@ var imdata = fs.readFileSync(path, 'binary');
 */
 //241.122
 
-im.convert([path, '(', '-gravity', 'center', '-pointsize', '40', '-background', 'transparent', '-font', 'font.ttf', '-fill', '#dd61d0', '-pointsize', '25', 'label:Andres', '-virtual-pixel', 'transparent', '-distort', 'Arc', '30', '-geometry', '+50-50', ')', '-composite', 'front2.png'], 
+im.convert([path, '(', '-gravity', 'center', '-pointsize', '40', '-background', 'transparent', '-font', 'font.ttf', '-fill', '#dd61d0', '-pointsize', '40', 'label:patrick', '-virtual-pixel', 'transparent', '-distort', 'Arc', '30', '-geometry', '+50-50', ')', '-composite', 'front2.png'], 
   function(err, stdout){
     if (err) throw err;
     console.log('stdout:', stdout);
