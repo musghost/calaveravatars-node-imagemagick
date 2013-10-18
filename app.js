@@ -29,10 +29,8 @@
 					type = url[POST.cu],
 					path = 'type/' + type + color,
 					label = 'label:"' + POST.tx + '"',
-					output = 'created/' + new Buffer(POST.cu + POST.cc + label).toString('base64') + ".png";
-
-				res.writeHead(200, {"Content-Type": "application/json"});
-
+					output = 'created/' + new Buffer(POST.cu + POST.cc + label).toString('base64') + ".png",
+					response = {};
 				im.convert([
 						path,
 						'(',
@@ -51,16 +49,21 @@
 					function(err, stdout){
 						if (err) throw err;
 						console.log('out:', output);
-						res.write(output);
+						response["success"] = true;
+						response["url"] = output;
+						res.writeHead(200, {"Content-Type": "text/plain", "Content-Length": JSON.stringify(response).length });
+						//res.write("NOMAMEMSM");
+						res.write(JSON.stringify(response));
+						res.end();
+						console.log("end");
+						
 					}
 				);
-
-				res.end();
 			});
 
 		}
 
-		if(req)
-			res.end();
+		/*if(req)
+			res.end();*/
 
 	}).listen(3000);
